@@ -54,12 +54,19 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->plugin(\TomatoPHP\FilamentEcommerce\FilamentEcommercePlugin::make()
-            ->useCoupon()
-            ->useGiftCard()
-            ->useReferralCode()
-            ->allowOrderExport()
-            ->allowOrderImport()
-            ->useWidgets());
+            ->plugin(
+                \TomatoPHP\FilamentEcommerce\FilamentEcommercePlugin::make()
+                    ->useCoupon()
+                    ->useGiftCard()
+                    ->useReferralCode()
+                    ->allowOrderExport()
+                    ->allowOrderImport()
+                    ->useWidgets()
+            )
+            ->plugin(\TomatoPHP\FilamentTranslations\FilamentTranslationsPlugin::make())
+            ->plugin(\TomatoPHP\FilamentLanguageSwitcher\FilamentLanguageSwitcherPlugin::make())
+            ->plugin(\TomatoPHP\FilamentTranslationsGoogle\FilamentTranslationsGooglePlugin::make());
+            
+            
     }
 }
